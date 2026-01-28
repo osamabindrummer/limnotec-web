@@ -1,0 +1,25 @@
+# Changelog
+
+## 2026-01-28
+
+### Cambios
+- Agregado `README.MD` con diagnóstico técnico de `lt-v1` y `lt-v2`.
+- Agregado `changelog.md` para registrar cambios futuros.
+- Agregado PRD en `docs/prd-landing-limnotec-v3.md` con requisitos para la nueva landing.
+- Agregado `docs/tareas.md` con tareas detalladas derivadas del PRD.
+- Creada la base del proyecto Astro en `lt-v3` (configuración, layout y página inicial).
+- Rediseñada la landing con enfoque premium inspirado en referencias (hero cinematográfico, tipografía editorial, grids amplios).
+- Ajustados estilos globales y componentes (servicios, experiencia, navegación y contacto).
+- Integrado video hero en `lt-v3/public/media/rock.mp4`.
+- Reemplazado formulario por CTA `mailto` y botón de copiar correo en contacto.
+- Renombrada la carpeta de trabajo a `lt-v3` y actualizadas referencias en documentación.
+- Actualizado `docs/tareas.md` con el avance real y nuevo bloque de refinamiento.
+
+### Notas
+- Se optó por contacto vía `mailto` para mantener la landing simple y estática.
+
+### Cómo verificar
+1. Revisar `lt-v3/src/pages/index.astro` y `lt-v3/public/styles/global.css`.
+2. Verificar que `lt-v3/public/media/rock.mp4` exista.
+3. Probar que el botón "Escríbenos" abre el cliente de correo y que "Email en portapapeles" copia el correo.
+4. Abrir `docs/tareas.md` y confirmar el avance.

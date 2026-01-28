@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Limnotec</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg-1: #03060b;
+        --bg-2: #050b15;
+        --bg-3: #0a1020;
+        --glow-1: rgba(30, 96, 140, 0.35);
+        --glow-2: rgba(10, 40, 80, 0.55);
+        --glass: rgba(255, 255, 255, 0.08);
+        --glass-strong: rgba(255, 255, 255, 0.12);
+        --stroke: rgba(255, 255, 255, 0.18);
+        --text: #e7eef8;
+        --text-soft: rgba(231, 238, 248, 0.7);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Futura", "Helvetica Neue", sans-serif;
+        background: radial-gradient(circle at 20% 20%, var(--bg-3) 0%, var(--bg-2) 45%, var(--bg-1) 100%);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .backdrop {
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(700px 500px at 20% 10%, rgba(0, 140, 210, 0.25), transparent 60%),
+          radial-gradient(600px 400px at 80% 20%, rgba(70, 120, 180, 0.22), transparent 65%),
+          radial-gradient(700px 600px at 60% 80%, rgba(10, 60, 120, 0.28), transparent 70%);
+        filter: blur(40px);
+        opacity: 0.9;
+        z-index: 0;
+      }
+
+      .noise {
+        position: fixed;
+        inset: 0;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.06"/></svg>');
+        opacity: 0.35;
+        mix-blend-mode: screen;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .shell {
+        position: relative;
+        z-index: 2;
+        padding: 48px 32px;
+        width: min(720px, 90vw);
+        text-align: center;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+        border: 1px solid var(--stroke);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      p {
+        margin: 0 0 36px;
+        font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+        color: var(--text-soft);
+      }
+
+      .button-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 16px;
+      }
+
+      .glass-btn {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: linear-gradient(120deg, var(--glass), rgba(255, 255, 255, 0.02));
+        color: var(--text);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        overflow: hidden;
+      }
+
+      .glass-btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+        transform: translateX(-120%);
+        transition: transform 0.6s ease;
+        opacity: 0.6;
+      }
+
+      .glass-btn:hover,
+      .glass-btn:focus-visible {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.45);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(80, 150, 220, 0.25);
+      }
+
+      .glass-btn:hover::after,
+      .glass-btn:focus-visible::after {
+        transform: translateX(120%);
+      }
+
+      .glass-btn:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 520px) {
+        .shell {
+          padding: 36px 24px;
+          border-radius: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+    <main class="shell">
+      <h1>Limnotec</h1>
+      <p>Selecciona la versión</p>
+      <div class="button-row">
+        <a class="glass-btn" href="./lt-v1/index.html">v1</a>
+        <a class="glass-btn" href="./lt-v2/index.html">v2</a>
+        <a class="glass-btn" href="./lt-v3/index.html">v3</a>
+      </div>
+    </main>
+  </body>
+</html>

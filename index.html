@@ -84,12 +84,6 @@
         color: var(--text-soft);
       }
 
-      .button-row {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 16px;
-      }
-
       .glass-btn {
         position: relative;
         display: inline-flex;
@@ -134,6 +128,42 @@
         transform: translateY(0);
       }
 
+      .version-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+
+      .version-card {
+        padding: 18px 16px 20px;
+        border-radius: 20px;
+        border: 1px solid var(--stroke);
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        display: grid;
+        gap: 10px;
+      }
+
+      .version-card h2 {
+        margin: 0;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .version-card p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        color: var(--text-soft);
+      }
+
+      .version-card .glass-btn {
+        justify-self: center;
+        width: 100%;
+        max-width: 200px;
+      }
+
       @media (max-width: 520px) {
         .shell {
           padding: 36px 24px;
@@ -148,10 +178,27 @@
     <main class="shell">
       <h1>Limnotec</h1>
       <p>Selecciona la versión</p>
-      <div class="button-row">
-        <a class="glass-btn" href="./lt-v1/index.html">v1</a>
-        <a class="glass-btn" href="./lt-v2/index.html">v2</a>
-        <a class="glass-btn" href="./lt-v3/index.html">v3</a>
+      <div class="version-grid">
+        <section class="version-card">
+          <h2>Versión 1</h2>
+          <p>Web actual creada en 2020, mantenida intacta hasta hoy. Tamaño: 10 MB.</p>
+          <a class="glass-btn" href="./v1/index.html">Abrir v1</a>
+        </section>
+        <section class="version-card">
+          <h2>Versión 2</h2>
+          <p>Contenido idéntico a la versión 1, montado en plantilla RapidWeaver Aspen. Tamaño: 37 MB.</p>
+          <a class="glass-btn" href="./v2/index.html">Abrir v2</a>
+        </section>
+        <section class="version-card">
+          <h2>Versión 3</h2>
+          <p>Landing de una sola página, más breve, con textos nuevos inspirados en Aspen. Tamaño: 10 MB.</p>
+          <a class="glass-btn" href="./v3/index.html">Abrir v3</a>
+        </section>
+        <section class="version-card">
+          <h2>Versión 4</h2>
+          <p>Diseño generado con IA, usando el copy de la versión 3. Tamaño: 1 MB.</p>
+          <a class="glass-btn" href="./v4/index.html">Abrir v4</a>
+        </section>
       </div>
     </main>
   </body>

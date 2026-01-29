@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-01-29
+
+### Cambios
+- Actualizado `index.html` raíz con enlaces a `v1`–`v4`, descripciones y tamaños en MB.
+- Eliminados archivos huérfanos en `v3/resources` que no estaban referenciados localmente.
+- Actualizado `README.MD` con descripción del proyecto y detalle de versiones.
+- Agregado `.gitignore` para archivos de macOS.
+- Eliminados `copy_web.md` y archivos `.DS_Store` del repositorio.
+
+### Notas
+- En `v3/index.html` los íconos/favicons siguen apuntando a URLs absolutas; por eso se eliminaron los recursos locales equivalentes.
+
+### Cómo verificar
+1. Abrir `index.html` y comprobar que los enlaces a `v1/index.html`, `v2/index.html`, `v3/index.html`, `v4/index.html` funcionen.
+2. Revisar `README.MD` para confirmar la descripción de versiones.
+3. Confirmar que `v3/resources` ya no contiene los assets eliminados y que el sitio sigue cargando.
+
 ## 2026-01-28
 
 ### Cambios

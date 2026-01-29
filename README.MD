@@ -1,31 +1,22 @@
-# LimnoTec Web – Diagnóstico y estado actual
+# LimnoTec Web
 
-## Resumen ejecutivo
-- Las versiones previas (`lt-v1`, `lt-v2`) se mantienen intactas como referencia.
-- El contacto se resolvió con **mailto** para mantener la landing estática y simple.
+## Enlaces públicos a las versiones
+- Versión 1: `./v1/index.html`
+- Versión 2: `./v2/index.html`
+- Versión 3: `./v3/index.html`
+- Versión 4: `./v4/index.html`
 
-## Stack actual
-- **Astro** (sitio estático) en `lt-v3`
-- HTML/CSS/JS generado por Astro
-- Assets locales (video hero y recursos reutilizados)
+## Resumen del proyecto
+Este repositorio es una compilación de versiones alternativas de la página web de LimnoTec, mantenidas en carpetas independientes para comparación y referencia.
 
-## Estructura clave
-- `lt-v1/`: versión antigua (RapidWeaver)
-- `lt-v2/`: versión reciente (RapidWeaver)
-- `lt-v3/`: nueva landing premium en Astro
-- `docs/prd-landing-limnotec-v3.md`: PRD
-- `docs/tareas.md`: tareas detalladas
+## Versiones
+- **v1 (RapidWeaver):** web actual creada en 2020, mantenida intacta. Incluye formulario de contacto en PHP que no renderiza sin un servicio externo de procesamiento (funcionalidad adicional de RapidWeaver).
+- **v2 (RapidWeaver, Aspen):** mismo contenido de la v1 (textos e imágenes) migrado a la plantilla Aspen. También incluye formulario de contacto en PHP con el mismo requerimiento de servicio externo.
+- **v3 (RapidWeaver, Aspen):** versión moderna, breve y de una sola página con scroll. Diseño inspirado en Aspen y textos completamente nuevos.
+- **v4 (IA):** versión creada con inteligencia artificial (Codex), usando el copy de la v3 con un diseño completamente distinto.
 
-## Cómo ejecutar la landing (lt-v3)
-Prechecks:
-- Node.js instalado.
-
-Comandos:
-1. `cd /Users/dsj-imac/Developer/limnotec-web/lt-v3`
-2. `npm install`
-3. `npm run dev`
-
-Abrir la URL indicada por Astro (normalmente `http://localhost:4321`).
-
-## Notas
-- `npm audit` reporta vulnerabilidades del servidor de desarrollo de Astro; se decidió postergar la actualización hasta después de cerrar el diseño.
+## Estructura de carpetas
+- `v1/`: versión 1 (RapidWeaver)
+- `v2/`: versión 2 (RapidWeaver Aspen)
+- `v3/`: versión 3 (RapidWeaver Aspen, landing moderna y breve)
+- `v4/`: versión 4 (diseño IA con copy de v3)

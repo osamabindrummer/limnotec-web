@@ -164,6 +164,12 @@
         max-width: 200px;
       }
 
+      @media (max-width: 720px) {
+        .version-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 520px) {
         .shell {
           padding: 36px 24px;
@@ -198,6 +204,11 @@
           <h2>Versión 4</h2>
           <p>Diseño generado con IA, usando el copy de la versión 3. Tamaño: 1 MB.</p>
           <a class="glass-btn" href="./v4/index.html">Abrir v4</a>
+        </section>
+        <section class="version-card">
+          <h2>Versión 5</h2>
+          <p>Idéntica a v3 pero sin RapidWeaver.</p>
+          <a class="glass-btn" href="./v5/index.html">Abrir v5</a>
         </section>
       </div>
     </main>

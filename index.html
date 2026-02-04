@@ -27,7 +27,7 @@
       body {
         margin: 0;
         min-height: 100vh;
-        font-family: "Avenir Next", "Futura", "Helvetica Neue", sans-serif;
+        font-family: "Iowan Old Style", "Palatino", "Times New Roman", serif;
         background: radial-gradient(circle at 20% 20%, var(--bg-3) 0%, var(--bg-2) 45%, var(--bg-1) 100%);
         color: var(--text);
         display: grid;
@@ -73,102 +73,65 @@
         -webkit-backdrop-filter: blur(24px);
       }
 
-      h1 {
-        margin: 0 0 24px;
-        font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      p {
-        margin: 0 0 36px;
-        font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-        color: var(--text-soft);
-      }
-
-      .glass-btn {
-        position: relative;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        padding: 14px 20px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: linear-gradient(120deg, var(--glass), rgba(255, 255, 255, 0.02));
-        color: var(--text);
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        overflow: hidden;
-      }
-
-      .glass-btn::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-        transform: translateX(-120%);
-        transition: transform 0.6s ease;
-        opacity: 0.6;
-      }
-
-      .glass-btn:hover,
-      .glass-btn:focus-visible {
-        transform: translateY(-2px);
-        border-color: rgba(255, 255, 255, 0.45);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(80, 150, 220, 0.25);
-      }
-
-      .glass-btn:hover::after,
-      .glass-btn:focus-visible::after {
-        transform: translateX(120%);
-      }
-
-      .glass-btn:active {
-        transform: translateY(0);
-      }
-
-      .version-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 18px;
-      }
-
-      .version-card {
-        padding: 18px 16px 20px;
-        border-radius: 20px;
-        border: 1px solid var(--stroke);
-        background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-        display: grid;
-        gap: 10px;
-      }
-
-      .version-card h2 {
-        margin: 0;
-        font-size: 1rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .version-card p {
-        margin: 0;
-        font-size: 0.95rem;
-        line-height: 1.4;
-        color: var(--text-soft);
-      }
-
-      .version-card .glass-btn {
-        justify-self: center;
+      .version-table {
         width: 100%;
-        max-width: 200px;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+      }
+
+      .version-table thead th {
+        font-family: "Avenir Next", "Futura", "Helvetica Neue", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--text-soft);
+        padding: 0 0 16px;
+      }
+
+      .version-table tbody tr {
+        border-top: 1px solid var(--stroke);
+      }
+
+      .version-table td {
+        padding: 16px 0;
+        vertical-align: top;
+        line-height: 1.5;
+      }
+
+      .version-table td:first-child {
+        width: 96px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .version-link {
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease, color 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .version-link:hover,
+      .version-link:focus-visible {
+        border-color: var(--text-soft);
+        color: #ffffff;
+        outline: none;
+      }
+
+      .version-desc {
+        color: var(--text-soft);
       }
 
       @media (max-width: 720px) {
-        .version-grid {
-          grid-template-columns: 1fr;
+        .shell {
+          padding: 40px 26px;
+        }
+
+        .version-table td:first-child {
+          width: 72px;
         }
       }
 
@@ -177,6 +140,33 @@
           padding: 36px 24px;
           border-radius: 22px;
         }
+
+        .version-table {
+          font-size: 0.9rem;
+        }
+
+        .version-table td {
+          padding: 12px 0;
+        }
+
+        .version-table td:first-child {
+          width: 60px;
+          letter-spacing: 0.06em;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .shell {
+          padding: 32px 20px;
+        }
+
+        .version-table {
+          font-size: 0.86rem;
+        }
+
+        .version-table td:first-child {
+          width: 56px;
+        }
       }
     </style>
   </head>
@@ -184,35 +174,36 @@
     <div class="backdrop" aria-hidden="true"></div>
     <div class="noise" aria-hidden="true"></div>
     <main class="shell">
-      <h1>Limnotec</h1>
-      <p>Selecciona la versión</p>
-      <div class="version-grid">
-        <section class="version-card">
-          <h2>Versión 1</h2>
-          <p>Web actual creada en 2020, mantenida intacta hasta hoy. Tamaño: 10 MB.</p>
-          <a class="glass-btn" href="./v1/index.html">Abrir v1</a>
-        </section>
-        <section class="version-card">
-          <h2>Versión 2</h2>
-          <p>Contenido idéntico a la versión 1, montado en plantilla RapidWeaver Aspen. Tamaño: 37 MB.</p>
-          <a class="glass-btn" href="./v2/index.html">Abrir v2</a>
-        </section>
-        <section class="version-card">
-          <h2>Versión 3</h2>
-          <p>Landing de una sola página, más breve, con textos nuevos inspirados en Aspen. Tamaño: 10 MB.</p>
-          <a class="glass-btn" href="./v3/index.html">Abrir v3</a>
-        </section>
-        <section class="version-card">
-          <h2>Versión 4</h2>
-          <p>Diseño generado con IA, usando el copy de la versión 3. Tamaño: 1 MB.</p>
-          <a class="glass-btn" href="./v4/index.html">Abrir v4</a>
-        </section>
-        <section class="version-card">
-          <h2>Versión 5</h2>
-          <p>Idéntica a v3 pero sin RapidWeaver.</p>
-          <a class="glass-btn" href="./v5/index.html">Abrir v5</a>
-        </section>
-      </div>
+      <table class="version-table">
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>Descripcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a class="version-link" href="./v1/index.html">v1</a></td>
+            <td class="version-desc">Web actual creada en 2020, mantenida intacta hasta hoy. Tamaño: 10 MB.</td>
+          </tr>
+          <tr>
+            <td><a class="version-link" href="./v2/index.html">v2</a></td>
+            <td class="version-desc">Contenido idéntico a la versión 1, montado en plantilla RapidWeaver Aspen. Tamaño: 37 MB.</td>
+          </tr>
+          <tr>
+            <td><a class="version-link" href="./v3/index.html">v3</a></td>
+            <td class="version-desc">Landing de una sola página, más breve, con textos nuevos inspirados en Aspen. Tamaño: 10 MB.</td>
+          </tr>
+          <tr>
+            <td><a class="version-link" href="./v4/index.html">v4</a></td>
+            <td class="version-desc">Diseño generado con IA, usando el copy de la versión 3. Tamaño: 1 MB.</td>
+          </tr>
+          <tr>
+            <td><a class="version-link" href="./v5/index.html">v5</a></td>
+            <td class="version-desc">Idéntica a v3 pero sin RapidWeaver.</td>
+          </tr>
+        </tbody>
+      </table>
     </main>
   </body>
 </html>

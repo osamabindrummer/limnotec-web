@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-02-06
+
+### Cambios
+- Sincronizada la rama `main` local con `origin/main` mediante `fetch` + `pull --rebase`.
+- Integrada en `v5/index.html` una banda continua de clientes antes de la sección `👥 Equipo`, con texto introductorio "Han confiado en nosotros:".
+- Dejada una sola variante visual (equivalente a la opción 3), con desplazamiento continuo y sin espacios muertos.
+- Ajustado el diseño para que la banda sea transparente (sin fondo de contenedor), manteniendo clientes en cajas con borde `#3D8A9C` y texto blanco.
+- Corregida ortografía en nombres de clientes: "Eléctrica", "Hidroeléctrica" y "Morandé".
+- Reemplazadas líneas horizontales `<hr />` por separaciones verticales discretas.
+- Actualizada nota final en contacto para incluir "permisos necesarios".
+
+### Cómo verificar
+1. Abrir `v5/index.html` y ubicar la banda antes de `👥 Equipo`.
+2. Confirmar que la frase "Han confiado en nosotros:" es negra y que la banda no tiene fondo de contenedor.
+3. Verificar desplazamiento continuo y ciclo sin cortes al volver a `AGEA`.
+4. Confirmar que no hay líneas horizontales visibles en esas transiciones de sección.
+5. Revisar la nota final de contacto con el texto actualizado sobre "permisos necesarios".
+
 ## 2026-01-29
 
 ### Cambios

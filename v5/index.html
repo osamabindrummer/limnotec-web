@@ -49,25 +49,46 @@
 			}
 
 			.clients-ticker {
-				--ticker-duration: 72s;
-				--ticker-gap: 16px;
-				--ticker-chip-size: 0.88rem;
-				--ticker-chip-y: 8px;
-				--ticker-chip-x: 16px;
+				--ticker-duration: 70s;
+				--ticker-gap: clamp(18px, 3.8vw, 42px);
+				position: relative;
 				overflow: hidden;
-				padding: 2px 0;
+				padding: 10px 0;
 				background: transparent;
+			}
+
+			.clients-ticker::before,
+			.clients-ticker::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: clamp(40px, 8vw, 90px);
+				pointer-events: none;
+				z-index: 2;
+			}
+
+			.clients-ticker::before {
+				left: 0;
+				background: linear-gradient(to right, #ffffff 20%, rgba(255, 255, 255, 0));
+			}
+
+			.clients-ticker::after {
+				right: 0;
+				background: linear-gradient(to left, #ffffff 20%, rgba(255, 255, 255, 0));
 			}
 
 			.clients-ticker-track {
 				display: flex;
 				width: max-content;
 				animation: clients-ticker-scroll var(--ticker-duration) linear infinite;
+				will-change: transform;
 			}
 
 			.clients-ticker-list {
 				list-style: none;
 				display: flex;
+				align-items: center;
 				flex-shrink: 0;
 				gap: var(--ticker-gap);
 				margin: 0;
@@ -75,30 +96,298 @@
 			}
 
 			.clients-ticker-list li {
-				white-space: nowrap;
-				color: #ffffff;
-				border: 1px solid #3D8A9C;
-				border-radius: 999px;
-				background: rgba(22, 51, 59, 0.86);
-				padding: var(--ticker-chip-y) var(--ticker-chip-x);
-				font-size: var(--ticker-chip-size);
-				line-height: 1.2;
+				flex: 0 0 auto;
+				width: clamp(108px, calc(var(--logo-ratio, 2.8) * 52px), 245px);
+				height: clamp(42px, 6vw, 72px);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 6px 8px;
 			}
 
-			.clients-ticker--main {
-				--ticker-duration: 72s;
-				--ticker-gap: 16px;
-				--ticker-chip-size: 0.88rem;
-				--ticker-chip-y: 8px;
-				--ticker-chip-x: 16px;
+			.clients-ticker-logo {
+				width: auto;
+				height: auto;
+				max-width: calc(100% * var(--logo-scale, 0.92));
+				max-height: calc(100% * var(--logo-scale, 0.92));
+				object-fit: contain;
+				object-position: center;
+				filter: grayscale(100%);
+				opacity: 0.9;
 			}
 
-			@keyframes clients-ticker-scroll {
-				from {
-					transform: translateX(0);
+				.clients-ticker--main {
+					--ticker-duration: 70s;
+					--ticker-gap: clamp(18px, 3.8vw, 42px);
 				}
+
+				.clients-ticker-shell--wide {
+					width: 100vw;
+					max-width: 100vw;
+					margin: 0 0 26px;
+					margin-left: calc(50% - 50vw);
+					padding: 18px 0 24px;
+					background: #ffffff;
+					position: relative;
+					z-index: 2;
+				}
+
+				.clients-ticker-shell--wide .clients-trust-copy {
+					max-width: 1000px;
+					margin: 0 auto 14px;
+					padding: 0 40px;
+				}
+
+				.figure.theme header.theme > img,
+				.figure.theme header.theme + img {
+					display: block;
+					float: none;
+					margin-left: auto;
+					margin-right: 0;
+				}
+
+				.break_degree {
+					height: 88px;
+					overflow: hidden;
+				}
+
+				#stacks_out_30 {
+					margin-bottom: 26px;
+				}
+
+				#stacks_out_35 {
+					margin-bottom: 20px;
+				}
+
+				.break_degree > div {
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 100%;
+					transform: none;
+				}
+
+				.services-panel {
+					margin: 24px 0 36px;
+					padding: clamp(34px, 5vw, 58px) clamp(26px, 4.8vw, 56px) clamp(30px, 4vw, 44px);
+					background: #E9E9E9;
+					border-radius: clamp(28px, 4vw, 44px);
+					box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
+				}
+
+				.services-panel__title {
+					margin: 0;
+					text-align: center;
+					font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+					font-weight: 800;
+					letter-spacing: 0.11em;
+					text-transform: uppercase;
+					color: #231f26;
+				}
+
+				.services-panel__divider {
+					border: 0;
+					border-top: 1px solid rgba(35, 31, 38, 0.14);
+					margin: clamp(12px, 1.8vw, 20px) 0 clamp(24px, 2.8vw, 32px);
+				}
+
+				#stacks_out_76 {
+					margin-top: 28px;
+				}
+
+				.services-panel__grid {
+					display: grid;
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+					gap: clamp(20px, 2.8vw, 48px);
+				}
+
+				.service-card {
+					display: flex;
+					flex-direction: column;
+					gap: 12px;
+					min-height: 100%;
+				}
+
+				.service-card__icon {
+					width: clamp(88px, 9vw, 126px);
+					height: clamp(88px, 9vw, 126px);
+					border-radius: 28px;
+					background: #ebe8e8;
+					display: grid;
+					place-items: center;
+					box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
+				}
+
+				.service-card__icon[aria-hidden="true"] {
+					display: none;
+				}
+
+				.service-card__glyph {
+					width: clamp(42px, 4vw, 54px);
+					height: clamp(42px, 4vw, 54px);
+					border-radius: 12px;
+					background-image: radial-gradient(circle, #231f26 2.2px, transparent 2.3px);
+					background-size: 11px 11px;
+					background-position: center;
+				}
+
+				.service-card__glyph--diamond {
+					border-radius: 10px;
+					transform: rotate(45deg);
+				}
+
+				.service-card__glyph--circle {
+					border-radius: 999px;
+				}
+
+				.service-card__heading {
+					margin: 0;
+					color: #1f1b23;
+					font-size: clamp(1.36rem, 1.95vw, 2rem);
+					line-height: 1.16;
+					letter-spacing: -0.015em;
+					max-width: 14ch;
+				}
+
+				.service-card__description {
+					margin: 0;
+					color: #2d2933;
+					font-size: clamp(0.92rem, 0.98vw, 1.02rem);
+					line-height: 1.5;
+				}
+
+				.service-card__image {
+					width: 100%;
+					height: clamp(100px, 9.5vw, 136px);
+					object-fit: cover;
+					border-radius: 18px;
+					margin-top: auto;
+					box-shadow: 0 8px 22px rgba(26, 21, 33, 0.12);
+				}
+
+				.team-showcase {
+					margin: 8px 0 14px;
+					background: #E9E9E9;
+					border-radius: clamp(20px, 2.8vw, 30px);
+					overflow: hidden;
+					display: grid;
+					grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+					align-items: stretch;
+				}
+
+				.team-showcase__content {
+					padding: clamp(16px, 2.1vw, 30px) clamp(20px, 2.8vw, 40px);
+					display: flex;
+					align-items: center;
+				}
+
+				.team-showcase__quote {
+					margin: 0;
+					font-size: clamp(0.93rem, 1.08vw, 1.08rem);
+					line-height: 1.55;
+					color: #1f1b23;
+				}
+
+				.team-showcase__media {
+					min-height: clamp(230px, 30vw, 500px);
+					height: 100%;
+					display: flex;
+					align-self: stretch;
+				}
+
+				.team-showcase__image {
+					width: 100%;
+					height: 100%;
+					flex: 1 1 auto;
+					display: block;
+					object-fit: cover;
+					object-position: center 24%;
+				}
+
+				@media (max-width: 980px) {
+					.services-panel__grid {
+						grid-template-columns: repeat(2, minmax(0, 1fr));
+					}
+
+					.service-card__heading {
+						max-width: 100%;
+					}
+
+					.team-showcase {
+						grid-template-columns: 1fr;
+					}
+
+					.team-showcase__media {
+						min-height: 360px;
+					}
+				}
+
+				@media (max-width: 720px) {
+					.clients-ticker--main {
+						--ticker-gap: 42px;
+					}
+
+					.clients-ticker-list li {
+						width: clamp(108px, calc(var(--logo-ratio, 2.8) * 52px), 245px);
+						height: 72px;
+						padding: 6px 8px;
+					}
+
+					.services-panel__grid {
+						grid-template-columns: 1fr;
+						gap: 34px;
+					}
+
+					.service-card__heading {
+						font-size: 1.56rem;
+					}
+
+					.service-card__image {
+						height: 180px;
+					}
+
+					.team-showcase__content {
+						padding: 24px 20px;
+					}
+
+					.team-showcase__quote {
+						font-size: 0.9rem;
+						line-height: 1.5;
+					}
+
+					.team-showcase__media {
+						min-height: 300px;
+					}
+				}
+
+					@keyframes clients-ticker-scroll {
+						from {
+							transform: translateX(0);
+					}
 				to {
 					transform: translateX(-50%);
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.clients-ticker {
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+					scrollbar-width: thin;
+				}
+
+				.clients-ticker::before,
+				.clients-ticker::after {
+					display: none;
+				}
+
+				.clients-ticker-track {
+					animation: none;
+					transform: none;
+				}
+
+				.clients-ticker-list[aria-hidden="true"] {
+					display: none;
 				}
 			}
 
@@ -109,10 +398,9 @@
 <body>
   <div class="figure_bg">
     <div class="figure_cropping">
-      <div class="figure-container parallax">
-        <div id="theme_input"><video autoplay playsinline muted loop="true" width="1280" height="720"><source type="video/mp4" src="assets/media/rock.mp4"></video></div>
-        <img src="assets/media/hero-river.jpg" alt="Estudios limnol&oacute;gicos">
-      </div>
+	      <div class="figure-container parallax">
+	        <img src="assets/media/hero-river.jpg" alt="Estudios limnol&oacute;gicos">
+	      </div>
     </div><!-- Figure Crop -->
     <figure class="theme max_width_wrap">
       <header class="theme cf" data-baseurl="https://www.limnotec.cl/">
@@ -161,58 +449,64 @@
     <div class="col_b">
       <div class="inner_content">
         <h2 class="site_slogan">Bienvenid@</h2>
-        <strong>LimnoTec SpA</strong> es una empresa independiente de consultor&iacute;a ambiental especializada en el estudio de ecosistemas acu&aacute;ticos continentales y humedales. Recoge la amplia experiencia de sus socios fundadores <strong>Daniel Salas y Miguel Cisterna</strong>: ambos profesionales cuentan con m&aacute;s de 10 a&ntilde;os de experiencia en el desarrollo de estudios de limnolog&iacute;a y caudal ambiental.
+        <strong>LimnoTec SpA</strong> es una empresa de consultor&iacute;a ambiental especializada en el estudio de ecosistemas acu&aacute;ticos continentales y humedales. Recoge la amplia experiencia de sus socios <strong>Daniel Salas y Miguel Cisterna</strong>: ambos profesionales cuentan con <strong>m&aacute;s de 10 a&ntilde;os de experiencia</strong> en el desarrollo de estudios de limnolog&iacute;a y caudal ambiental.
       </div>
-    </div>
-  </aside>
-  <div class="break_degree"><div></div></div>
-  <main class="theme cf">
-    <div class="max_width_wrap_content">
-      
+	    </div>
+	  </aside>
+	  <div class="break_degree"><div></div></div>
+	  <main class="theme cf">
+	    <div class="max_width_wrap_content">
+	      <div class="clients-ticker-shell clients-ticker-shell--wide">
+	        <div class="clients-ticker clients-ticker--main" aria-label="Listado continuo de clientes de LimnoTec">
+	          <div class="clients-ticker-track">
+	            <ul class="clients-ticker-list"></ul>
+	            <ul class="clients-ticker-list" aria-hidden="true"></ul>
+	          </div>
+	        </div>
+	      </div>
+	      
 <div id='stacks_out_1' class='stacks_top'><div id='stacks_in_1' class=''><div id='stacks_out_30' class='stacks_out'><div id='stacks_in_30' class='stacks_in markdown_stack'><h3 id="acompañamosatitularesyconsultorasentodaslasetapasdelseiaconunacombinaciónsimple:rigurosidadcientíficacriterioregulatorioyejecucióneficiente.">Acompañamos a titulares y consultoras en todas las etapas del <strong>SEIA</strong> con una combinación simple: <strong>rigurosidad científica</strong>, <strong>criterio regulatorio</strong> y <strong>ejecución eficiente</strong>.</h3></div></div><div id='stacks_out_35' class='stacks_out'><div id='stacks_in_35' class='stacks_in com_yourhead_stack_button_stack'><div id='stacks_in_35_button'><a href="mailto:contacto@limnotec.cl">Cotiza con nosotros</a></div></div></div><div id='stacks_out_2' class='stacks_out'><div id='stacks_in_2' class='stacks_in markdown_stack'><div class="section-gap" aria-hidden="true"></div>
 
-<h2 id="🛠️servicios">🛠️ Servicios</h2>
-
-<h4 id="1caracterizacionesambientalesylíneasbase">1) Caracterizaciones ambientales y líneas base</h4>
-
-<p>Campañas bien diseñadas y ejecutadas. Entregamos análisis orientados a la toma de decisiones, con estándar adecuado para el SEIA.</p>
-
-<h4 id="2respuestaaobservacionesicsaraadenda">2) Respuesta a observaciones (ICSARA/Adenda)</h4>
-
-<p>Revisión crítica de antecedentes, detección de brechas, información complementaria y redacción técnica. Argumentos claros y defendibles. La Subsecretaría de Pesca y Acuicultura <strong>nos conoce</strong>.</p>
-
-<h4 id="3implementaciónderca">3) Implementación de RCA</h4>
-
-<p>Planificación y ejecución de programas de monitoreo/seguimiento, coordinación con laboratorios acreditados e informes de cumplimiento. Medidas de mitigación y reparación sobre ecosistemas acuáticos.</p></div></div><div id='stacks_out_37' class='stacks_out'><div id='stacks_in_37' class='stacks_in com_yourhead_stacks_three_columns_stack'><div class='s3_row'>
-	<div class='s3_column s3_column_left'><div id='stacks_out_62' class='stacks_out'><div id='stacks_in_62' class='stacks_in image_stack'>
-<div class='centered_image' >
-    <img class='imageStyle' src='assets/media/service-windmill.jpg' alt='Stacks Image 63' />
-</div>
-
-</div></div></div>
-	<div class='s3_column s3_column_center'><div id='stacks_out_57' class='stacks_out'><div id='stacks_in_57' class='stacks_in image_stack'>
-<div class='centered_image' >
-    <img class='imageStyle' src='assets/media/service-mining-truck.jpg' alt='Stacks Image 58' />
-</div>
-
-</div></div></div>
-	<div class='s3_column s3_column_right'><div id='stacks_out_64' class='stacks_out'><div id='stacks_in_64' class='stacks_in image_stack'>
-<div class='centered_image' >
-    <img class='imageStyle' src='assets/media/service-hydropower.jpg' alt='Stacks Image 65' />
-</div>
-
-</div></div></div>
-</div></div></div><div id='stacks_out_53' class='stacks_out'><div id='stacks_in_53' class='stacks_in markdown_stack'><div class="section-gap" aria-hidden="true"></div>
+<section class="services-panel" aria-labelledby="servicios">
+  <h2 class="services-panel__title" id="servicios">Servicios</h2>
+  <hr class="services-panel__divider">
+  <div class="services-panel__grid">
+    <article class="service-card">
+      <div class="service-card__icon" aria-hidden="true">
+        <span class="service-card__glyph"></span>
+      </div>
+      <h3 class="service-card__heading">Estudios y l&iacute;neas base</h3>
+      <p class="service-card__description">Campa&ntilde;as bien dise&ntilde;adas y ejecutadas. Entregamos an&aacute;lisis orientados a la toma de decisiones, con est&aacute;ndar adecuado para autoridades y el SEIA.</p>
+      <img class="service-card__image" src="assets/media/service-windmill.jpg" alt="Estudios y l&iacute;neas base">
+    </article>
+    <article class="service-card">
+      <div class="service-card__icon" aria-hidden="true">
+        <span class="service-card__glyph service-card__glyph--diamond"></span>
+      </div>
+	      <h3 class="service-card__heading">Respuestas a ICSARA</h3>
+	      <p class="service-card__description">Revisamos antecedentes, detectamos brechas, generamos informaci&oacute;n complementaria y redactamos respuestas t&eacute;cnicas con argumentos claros y defendibles.</p>
+      <img class="service-card__image" src="assets/media/service-mining-truck.jpg" alt="Respuestas a ICSARA">
+    </article>
+    <article class="service-card">
+      <div class="service-card__icon" aria-hidden="true">
+        <span class="service-card__glyph service-card__glyph--circle"></span>
+      </div>
+	      <h3 class="service-card__heading">Compromisos RCA</h3>
+		      <p class="service-card__description">Planificamos y ejecutamos programas de monitoreo y seguimiento, coordinamos con laboratorios acreditados e implementamos medidas de mitigaci&oacute;n y reparaci&oacute;n.</p>
+      <img class="service-card__image" src="assets/media/service-hydropower.jpg" alt="Compromisos RCA">
+    </article>
+  </div>
+</section></div></div><div id='stacks_out_53' class='stacks_out'><div id='stacks_in_53' class='stacks_in markdown_stack'><div class="section-gap" aria-hidden="true"></div>
 
 <h2 id="🔄cómotrabajamos">🔄 Cómo trabajamos</h2>
 
-<p>Los ecosistemas acuáticos suelen concentrar observaciones por <strong>pérdida de conectividad</strong> (fragmentación), <strong>regulación de caudales</strong>, <strong>alteración de calidad de agua</strong>, <strong>cambios de hábitat</strong> y <strong>afectación fauna hidrobiológica nativa</strong>. Nuestro enfoque busca anticipar y cerrar brechas:</p>
+<p>Los ecosistemas acuáticos suelen concentrar observaciones por <strong>pérdida de conectividad</strong> (fragmentación), <strong>regulación de caudales</strong>, <strong>alteración de la calidad del agua</strong>, <strong>cambios y pérdidas de hábitat</strong> y <strong>afectación de fauna hidrobiológica nativa</strong>. Nuestro enfoque busca anticipar y cerrar brechas:</p>
 
 <ol>
 <li><strong>Diagnóstico temprano:</strong> qué puede observarse y por qué.</li>
-<li><strong>Diseño de campañas con propósito:</strong> métodos adecuados y control de calidad.</li>
+<li><strong>Diseño de campañas <u>con propósito</u>:</strong> métodos adecuados + control de calidad.</li>
 <li><strong>Interpretación ecológica + lectura regulatoria:</strong> resultados que no se quedan en tablas.</li>
-<li><strong>Medidas y seguimiento realistas:</strong> que cumplan y que se puedan implementar.</li>
+<li><strong>Medidas y seguimiento <u>realistas</u>:</strong> que cumplan y se puedan implementar.</li>
 </ol>
 
 <h2 id="💧quéhacemos">💧 Qué hacemos</h2>
@@ -229,18 +523,16 @@
     <img class='imageStyle' src='assets/media/stacks-image-9f5470e-1200x404.png' alt='Stacks Image 77' />
 </div>
 
-</div></div><div class="clients-ticker-shell"><p class="clients-trust-copy">Han confiado en nosotros:</p><div class="clients-ticker clients-ticker--main" aria-label="Listado continuo de clientes de LimnoTec"><div class="clients-ticker-track"><ul class="clients-ticker-list"></ul><ul class="clients-ticker-list" aria-hidden="true"></ul></div></div></div><div id='stacks_out_66' class='stacks_out'><div id='stacks_in_66' class='stacks_in markdown_stack'><h2 id="👥equipo">👥 Equipo</h2>
+</div></div><div id='stacks_out_66' class='stacks_out'><div id='stacks_in_66' class='stacks_in markdown_stack'><div class="section-gap" aria-hidden="true"></div>
 
-<p><strong>Daniel Salas</strong> y <strong>Miguel Cisterna</strong> lideramos el trabajo en terreno y gabinete, pero operamos con una red de especialistas y laboratorios acreditados cuando el alcance lo requiere.</p></div></div><div id='stacks_out_70' class='stacks_out'><div id='stacks_in_70' class='stacks_in image_stack'>
-<div class='centered_image' >
-    <img class='imageStyle' src='assets/media/stacks-image-1223434-1200x618.jpg' alt='Stacks Image 71' />
-</div>
-
-</div></div><div id='stacks_out_68' class='stacks_out'><div id='stacks_in_68' class='stacks_in markdown_stack'><p><em>Daniel es biólogo y Magister en Ciencias Biológicas y Miguel es Ingeniero en Recursos Naturales Renovables, ambos de la Universidad de Chile y con experiencia <strong>comprobable</strong> de más de 10 años.</em></p>
-
-<div class="section-gap" aria-hidden="true"></div>
-
-<h2 id="📧contacto">📧 Contacto</h2>
+<section class="team-showcase" aria-label="Equipo de LimnoTec">
+  <div class="team-showcase__content">
+    <p class="team-showcase__quote"><strong>Daniel Salas</strong> y <strong>Miguel Cisterna</strong> lideran el trabajo en terreno y gabinete, pero operamos con una red de especialistas y laboratorios acreditados cuando el alcance lo requiere. Daniel es Biólogo y Magíster en Ciencias Biológicas y Miguel es Ingeniero en Recursos Naturales Renovables, ambos de la <strong>Universidad de Chile</strong> y con experiencia <strong><u>comprobable</u></strong> de más de 10 años.</p>
+  </div>
+  <div class="team-showcase__media">
+    <img class="team-showcase__image" src="assets/media/stacks-image-1223434-1200x618.jpg" alt="Daniel Salas y Miguel Cisterna, equipo LimnoTec">
+  </div>
+</section></div></div><div id='stacks_out_68' class='stacks_out'><div id='stacks_in_68' class='stacks_in markdown_stack'><div class="section-gap" aria-hidden="true"></div>
 
 <h4 id="sinecesitasapoyoenunalíneadebaseunicsaraolaejecucióndemedidasycompromisosdeunarcaconversemos.">Si necesitas apoyo en una línea de base, un ICSARA o la ejecución de medidas y compromisos de una RCA, conversemos.</h4></div></div><div id='stacks_out_74' class='stacks_out'><div id='stacks_in_74' class='stacks_in com_yourhead_stack_button_stack'><div id='stacks_in_74_button'><a href="mailto:contacto@limnotec.cl">Escríbenos</a></div></div></div><div id='stacks_out_72' class='stacks_out'><div id='stacks_in_72' class='stacks_in markdown_stack'><p><em>Nota: cuando un servicio lo requiera, te indicaremos oportunamente permisos necesarios y ventanas típicas de tramitación para planificar con holgura.</em></p></div></div></div></div>
 
@@ -255,60 +547,60 @@
   <script type="text/javascript" src="assets/js/theme.js"></script>
   <script>
     (function () {
-      const clients = [
-        "AGEA",
-        "Aguas Las Lilas",
-        "Amec Foster Wheeler",
-        "Andes Mainstream",
-        "Anpac",
-        "ARCADIS",
-        "Gaidó Consultores",
-        "BS Consultores",
-        "Central Candelaria",
-        "Corporación ChileAmbiente",
-        "Cumbres",
-        "EC Consulting",
-        "Ecomaule",
-        "Eléctrica Puntilla",
-        "Foco Ambiental",
-        "Futuro Sustentable",
-        "Gestión Ambiental Consultores",
-        "Green Patagonia",
-        "Hidroeléctrica Dos Valles",
-        "Hidroeléctrica San Andrés",
-        "Hidronalcas",
-        "Hidropalmar",
-        "Inmobiliaria Las Lilas",
-        "Inversiones San Carlos",
-        "LEN y Asociados Ingenieros",
-        "Louis Berger",
-        "MyMA",
-        "Nativa Energy",
-        "ORBE",
-        "San Isidro",
-        "Scotta Chile",
-        "SGA-SLR",
-        "Sunsweet",
-        "Sustentable",
-        "Viña Morandé",
-        "WSP Ambiental",
-        "WSP Mining",
-        "WTE Araucanía"
+      const logos = [
+        { file: "aguas-de-las-lilas.png", alt: "Aguas de las Lilas", ratio: 3.85, scale: 0.92 },
+        { file: "aguas-san-isidro.png", alt: "Aguas San Isidro", ratio: 3.82, scale: 0.9 },
+        { file: "amec-foster-wheeler.png", alt: "Amec Foster Wheeler", ratio: 1.95, scale: 0.84 },
+        { file: "anpac-energia.png", alt: "Anpac Energía", ratio: 1.92, scale: 0.86 },
+        { file: "arcadis.png", alt: "Arcadis", ratio: 4.38, scale: 0.96 },
+        { file: "bs-consultores.png", alt: "BS Consultores", ratio: 3.83, scale: 0.92 },
+        { file: "ec-consulting.png", alt: "EC Consulting", ratio: 3.1, scale: 0.94 },
+        { file: "foco-ambiental.png", alt: "Foco Ambiental", ratio: 1.9, scale: 0.8 },
+        { file: "freepower-group.png", alt: "Freepower Group", ratio: 3.8, scale: 0.94 },
+        { file: "futuro-sustentable.png", alt: "Futuro Sustentable", ratio: 2.69, scale: 0.9 },
+        { file: "gac.png", alt: "GAC", ratio: 3.99, scale: 0.93 },
+        { file: "gaido-consultores.png", alt: "Gaidó Consultores", ratio: 1, scale: 0.62 },
+        { file: "hidrosan.png", alt: "Hidrosan", ratio: 2.91, scale: 0.9 },
+        { file: "len-ingenieria.png", alt: "LEN Ingeniería", ratio: 2.15, scale: 0.86 },
+        { file: "louis-berger.png", alt: "Louis Berger", ratio: 2.87, scale: 0.9 },
+        { file: "mainstream.png", alt: "Mainstream", ratio: 3.2, scale: 0.92 },
+        { file: "myma.png", alt: "MyMA", ratio: 3.25, scale: 0.91 },
+        { file: "scotta.png", alt: "Scotta", ratio: 3.11, scale: 0.9 },
+        { file: "sga-gestion-ambiental.png", alt: "SGA Gestión Ambiental", ratio: 2.79, scale: 0.87 },
+        { file: "sunsweet.png", alt: "Sunsweet", ratio: 1.71, scale: 0.72 },
+        { file: "sustentable-sa.png", alt: "Sustentable S.A.", ratio: 3.55, scale: 0.92 },
+        { file: "urbanya.png", alt: "Urbanya", ratio: 3.47, scale: 0.92 },
+        { file: "wsp.png", alt: "WSP", ratio: 2.03, scale: 0.78 },
+        { file: "wte-araucania.png", alt: "WTE Araucanía", ratio: 1.98, scale: 0.84 }
       ];
 
       const tickerLists = document.querySelectorAll(".clients-ticker-list");
+      const primaryList = tickerLists[0];
+      const mirrorList = tickerLists[1];
 
-      tickerLists.forEach((list) => {
-        const fragment = document.createDocumentFragment();
+      if (!primaryList || !mirrorList) {
+        return;
+      }
 
-        clients.forEach((name) => {
-          const item = document.createElement("li");
-          item.textContent = name;
-          fragment.appendChild(item);
-        });
+      const fragment = document.createDocumentFragment();
 
-        list.appendChild(fragment);
+      logos.forEach((logo) => {
+        const item = document.createElement("li");
+        item.style.setProperty("--logo-ratio", String(logo.ratio));
+        item.style.setProperty("--logo-scale", String(logo.scale));
+        const image = document.createElement("img");
+        image.className = "clients-ticker-logo";
+        image.src = `assets/media/logos/${logo.file}`;
+        image.alt = logo.alt;
+        image.loading = "lazy";
+        image.decoding = "async";
+        item.appendChild(image);
+        fragment.appendChild(item);
       });
+
+      primaryList.appendChild(fragment);
+      // Duplicamos exactamente el mismo bloque para mantener el loop continuo sin saltos.
+      mirrorList.innerHTML = primaryList.innerHTML;
     })();
   </script>
 </body>
